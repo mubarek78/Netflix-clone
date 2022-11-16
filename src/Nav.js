@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import "./Nav.css";
-import YouTube from "react-youtube"
-import movieTrailer from "movie-trailer"
+
 
 
 function Nav() {

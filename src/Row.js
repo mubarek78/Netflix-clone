@@ -58,7 +58,7 @@ const handleClick = (movie) => {
   </div>
   <div style={{ padding: "40px"}}>
        {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
-  </div> 
+      </div> 
   </div>;
 }
 

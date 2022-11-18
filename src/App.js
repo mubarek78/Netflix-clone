@@ -2,6 +2,7 @@ import Banner from './Banner';
 import Nav from './Nav';
 import requests from './requests';
 import Row from './Row';
+import List from './List/List';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
      <Row title="Horor" fetchUrl={requests.fetchHororMovies}/>
      <Row title="Romance" fetchUrl={requests.fetchRomanceMovies}/>
      <Row title="Documentary" fetchUrl={requests.fetchDocumentaryMovies}/>
+     <List />
   </>
 }
 

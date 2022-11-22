@@ -10,13 +10,13 @@
     background-size: cover;
     position: relative;
 }
- .login > .wrapper {
+.top > .wrapper {
         padding: 20px 50px;
         display: flex;
         align-items: center;
         justify-content: space-between;
  }
-        .login > .logo {
+ .wrapper > .logo {
           height: 40px;
         }
      
@@ -33,7 +33,7 @@
       justify-content: center;
       color: white;
         }
-.login > form {
+.container > form {
         width: 300px;
         height: 300px;
         padding: 30px;
@@ -43,19 +43,19 @@
         flex-direction: column;
         justify-content: space-around;
       }
-.login > input {
+.container > input {
           height: 40px;
           border-radius: 5px;
           background-color: gray;
           color: white;
           padding-left: 10px;
       }
-.login > input::placeholder {
+.container > input::placeholder {
             color: lightgray;
           }
         
   
-.login > button {
+.container > button {
           height: 40px;
           border-radius: 5px;
           background-color: red;
@@ -66,10 +66,10 @@
           cursor: pointer;
         }
   
-.login > span {
+.container > span {
           color: lightgray;
         }
-.login >  b {
+.container >  b {
             color: white;
           }
  

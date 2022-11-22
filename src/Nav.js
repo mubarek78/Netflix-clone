@@ -19,6 +19,10 @@ function Nav() {
     };
   }, []);
 
+  const logout = () => {
+    localStorage.clear();
+}
+
   return (
     <div className={`nav ${show && "nav__black"}`}>
     <div className="left">
@@ -45,12 +49,12 @@ function Nav() {
           />
           <div className="profile">
             <ArrowDropDown className="icon dropdown" 
-              onMouseEnter={() => setShowopt(!showOpt)}
-              onMouseLeave={() => setShowopt(!showOpt)}
+              onMouseEnter={() => setShowopt(true)}
+              onMouseLeave={() => setShowopt(false)}
             />
-            <div   className={`hideoptions ${showOpt && "options"}`}>
+            <div   className={`${showOpt ? "options" : "options"}`}>
               <span>Settings</span>
-              <span>Logout</span>
+              <span onClick={() => logout()}>Logout</span>
             </div>
           </div>
         </div>

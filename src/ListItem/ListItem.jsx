@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUrl } from "./../features/url";
 
-export default function ListItem({ index, movie}) {
+export default function ListItem({ index, movie, isLarge}) {
   const [isHovered, setIsHovered] = useState(false);
   const [trailerUrl, setTrailerUrl] = useState("")
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default function ListItem({ index, movie}) {
 //     setUrl(dispatch, { url });
 //   };
 
-  let isLarge = false
+  // let isLarge = false
   const handleClick = (movie) => {
     if(trailerUrl){
       setTrailerUrl('')

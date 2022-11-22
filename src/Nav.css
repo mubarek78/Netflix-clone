@@ -26,6 +26,10 @@
   align-items: center;
 
 }
+.left_menu > .link{
+  text-decoration: none;
+  color: aliceblue;
+}
 .left_menu > span{
   cursor: pointer;
 }
@@ -43,22 +47,32 @@
 
 
 .right{
-  margin-right: 50px;
-  width: 18%;
+  margin-right: 90px;
+  width: 16%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 } 
 
-.hideoptions{
-  display: none;
-}
+
 
 .options{
+  position: absolute;
+  right: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  height: 50px;
+  width: 80px;
+  background-color: #111;
+  transition: 0.5s;
+  opacity: 1;
+}
+
+.hideoptions{
+  opacity: 0;
+  height: 0;
 }
 
 .options > span{

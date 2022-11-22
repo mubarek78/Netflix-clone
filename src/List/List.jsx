@@ -39,7 +39,7 @@ import {
         setSlideNumber(slideNumber - 1);
         listRef.current.style.transform = `translateX(${230 + distance}px)`;
       }
-      if (direction === "right" && slideNumber < 5) {
+      if (direction === "right" && slideNumber < 18) {
         setSlideNumber(slideNumber + 1);
         listRef.current.style.transform = `translateX(${-230 + distance}px)`;
       }
@@ -50,7 +50,7 @@ import {
     }else{
     return (
       <div className="list">
-        <span className="listTitle">{title}</span>
+        <h1 className="listTitle">{title}</h1>
         <div className="wrapper">
           <ArrowBackIosOutlined
             className="sliderArrow left"

@@ -9,15 +9,34 @@ function Home() {
    <>
       <Nav />
      <Banner />
-     <Row title="Netflix original" fetchUrl={requests.fetchNetflixOriginals} isLarge={true} />
+     {/* <Row title="Netflix original" fetchUrl={requests.fetchNetflixOriginals} isLarge={true} />
      <Row title="Trending" fetchUrl={requests.fetchTrending}/>
      <Row title="Top Rated" fetchUrl={requests.fetchTopRatedMovies}/>
      <Row title="Action" fetchUrl={requests.fetchActionMovies}/>
      <Row title="Comedy" fetchUrl={requests.fetchComedyMovies}/>
      <Row title="Horor" fetchUrl={requests.fetchHororMovies}/>
      <Row title="Romance" fetchUrl={requests.fetchRomanceMovies}/>
-     <Row title="Documentary" fetchUrl={requests.fetchDocumentaryMovies}/>
+     <Row title="Documentary" fetchUrl={requests.fetchDocumentaryMovies}/> */}
+
+     <List title="Netflix original" fetchUrl={requests.fetchNetflixOriginalMovies} isLarge={true} />
+     <List title="Trending" fetchUrl={requests.fetchTrendingMovies}/>
+     <List title="Top Rated" fetchUrl={requests.fetchTopRatedMovies}/>
+     <List title="Action" fetchUrl={requests.fetchActionMovies}/>
+     <List title="Comedy" fetchUrl={requests.fetchComedyMovies}/>
+     <List title="Animation" fetchUrl={requests.fetchAnimationMovies}/>
+     <List title="Horor" fetchUrl={requests.fetchHororMovies}/>
+     <List title="Romance" fetchUrl={requests.fetchRomanceMovies}/>
      <List title="Documentary" fetchUrl={requests.fetchDocumentaryMovies}/>
+
+     <List title="Netflix original" fetchUrl={requests.fetchNetflixOriginalsTvs} isLarge={true} />
+     <List title="Trending" fetchUrl={requests.fetchTrendingTvs}/>
+     <List title="Top Rated" fetchUrl={requests.fetchTopRatedTvs}/>
+     <List title="Action" fetchUrl={requests.fetchActionTvs}/>
+     <List title="Comedy" fetchUrl={requests.fetchComedyTvs}/>
+     <List title="Drama" fetchUrl={requests.fetchDramaTvs}/>
+     <List title="Romance" fetchUrl={requests.fetchRomanceTvs}/>
+     <List title="Documentary" fetchUrl={requests.fetchDocumentaryTvs}/>
+     
    </>
   )
 }

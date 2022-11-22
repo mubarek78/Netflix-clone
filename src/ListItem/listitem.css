@@ -12,6 +12,10 @@
       height: 100%;
       object-fit: cover;
     }
+
+    .row_posterLarge {
+      max-height: 250px;
+    }
   
 .video {
       width: 100%;

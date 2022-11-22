@@ -7,6 +7,7 @@ import "./Nav.css";
 
 function Nav() {
   const [show, handleShow] = useState(false);
+  const [showOpt, setShowopt] = useState(false)
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
@@ -43,8 +44,11 @@ function Nav() {
             alt=""
           />
           <div className="profile">
-            <ArrowDropDown className="icon dropdown" />
-            <div className="options">
+            <ArrowDropDown className="icon dropdown" 
+              onMouseEnter={() => setShowopt(!showOpt)}
+              onMouseLeave={() => setShowopt(!showOpt)}
+            />
+            <div   className={`hideoptions ${showOpt && "options"}`}>
               <span>Settings</span>
               <span>Logout</span>
             </div>

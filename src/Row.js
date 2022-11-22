@@ -8,12 +8,12 @@ const base_Url = "https://image.tmdb.org/t/p/original/"
 function Row({title, fetchUrl, isLarge}) {
 const [movies, setMovies] = useState([])
 const [trailerUrl, setTrailerUrl] = useState("")
-
+    trailerUrl && console.log(trailerUrl)
 
 useEffect( () => {
      async function fetchData() {
          const  request = await axios.get(fetchUrl)
-         console.log(request)
+        
          setMovies(request.data.results)
       
 
@@ -24,7 +24,7 @@ useEffect( () => {
 , [fetchUrl])
 
 const opts = {
-  heighr: "390",
+  height: "390",
   width: "100%",
   playerVars: {
     autoplay: 1,
@@ -39,6 +39,7 @@ const handleClick = (movie) => {
     .then((url) => {
       const urlParams = new URLSearchParams(new URL(url).search)
       setTrailerUrl(urlParams.get('v'))
+      
     })
     .catch((error) => console.log(error))
   }

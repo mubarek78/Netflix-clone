@@ -2,16 +2,36 @@ import {
     ArrowBackIosOutlined,
     ArrowForwardIosOutlined,
   } from "@material-ui/icons";
-  import { useRef, useState } from "react";
+  import { useRef, useState, useEffect } from "react";
+  import axios from "../axios";
   import ListItem from "../ListItem/ListItem";
   import "./list.css";
   
-  export default function List() {
+  export default function List({title, fetchUrl, isLarge}) {
+     
     const [isMoved, setIsMoved] = useState(false);
     const [slideNumber, setSlideNumber] = useState(0);
   
     const listRef = useRef();
   
+    const [movies, setMovies] = useState(false)
+    const [trailerUrl, setTrailerUrl] = useState("")
+    console.log(movies)
+    
+    useEffect( () => {
+         async function fetchData() {
+             const  request = await axios.get(fetchUrl)
+             console.log(request)
+             setMovies(request.data.results)
+          
+    
+         }
+         fetchData()
+    }
+    
+    , [fetchUrl])
+
+
     const handleClick = (direction) => {
       setIsMoved(true);
       let distance = listRef.current.getBoundingClientRect().x - 50;
@@ -24,9 +44,13 @@ import {
         listRef.current.style.transform = `translateX(${-230 + distance}px)`;
       }
     };
+
+    if(movies == false) { 
+        return(<p>Loading</p>)
+    }else{
     return (
       <div className="list">
-        <span className="listTitle">Continue to watch</span>
+        <span className="listTitle">{title}</span>
         <div className="wrapper">
           <ArrowBackIosOutlined
             className="sliderArrow left"
@@ -34,16 +58,7 @@ import {
             style={{ display: !isMoved && "none" }}
           />
           <div className="container" ref={listRef}>
-            <ListItem index={0} />
-            <ListItem index={1} />
-            <ListItem index={2} />
-            <ListItem index={3} />
-            <ListItem index={4} />
-            <ListItem index={5} />
-            <ListItem index={6} />
-            <ListItem index={7} />
-            <ListItem index={8} />
-            <ListItem index={9} />
+          { movies.map((movie, index) => <ListItem index={index} movie={movie}/>)}
           </div>
           <ArrowForwardIosOutlined
             className="sliderArrow right"
@@ -52,4 +67,5 @@ import {
         </div>
       </div>
     );
+        }
   }

@@ -3,21 +3,28 @@ import Nav from './Nav';
 import requests from './requests';
 import Row from './Row';
 import List from './List/List';
+import Home from './pages/home';
+import Register from './pages/Register/Register';
+import Login from './pages/Login/Login';
+import Watch from './pages/Watch/Watch';
+import { useDispatch, useSelector } from "react-redux";
+import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 
 
 function App() {
+  const currentUser = useSelector((state) => state.user.currentUser);
   return <>
-     <Nav />
-     <Banner />
-     <Row title="Netflix original" fetchUrl={requests.fetchNetflixOriginals} isLarge={true} />
-     <Row title="Trending" fetchUrl={requests.fetchTrending}/>
-     <Row title="Top Rated" fetchUrl={requests.fetchTopRatedMovies}/>
-     <Row title="Action" fetchUrl={requests.fetchActionMovies}/>
-     <Row title="Comedy" fetchUrl={requests.fetchComedyMovies}/>
-     <Row title="Horor" fetchUrl={requests.fetchHororMovies}/>
-     <Row title="Romance" fetchUrl={requests.fetchRomanceMovies}/>
-     <Row title="Documentary" fetchUrl={requests.fetchDocumentaryMovies}/>
-     <List />
+       <BrowserRouter>
+    <Routes>
+    <Route path="/" element={currentUser ? <Home /> : <Navigate to="/login" />}/>
+    <Route path="/login" element={currentUser ? <Navigate to="/" /> : <Login />}/> 
+    <Route path="/register" element={currentUser ? <Navigate to="/" /> : <Register />}/>
+    <Route path="/watch" element={currentUser ? <Navigate to="/watch" /> : <Login />}/>
+    {/* <Route path="/login" element={currentUser ? <Navigate to="/" /> : <Login />}/>  */}
+    {/* <Route path="/cart" element={<Cart />}/> */}
+ 
+      </Routes>
+    </BrowserRouter>
   </>
 }
 

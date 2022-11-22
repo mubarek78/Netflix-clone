@@ -50,18 +50,18 @@
   align-items: center;
 } 
 
-.options{
+/* .hideoptions{
   display: none;
-}
+} */
 
-/* .options:hover{
+.options:hover{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-} */
+}
 
-.icon {
+.profile > .icon {
   cursor: pointer;
   color: aliceblue;
 }

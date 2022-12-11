@@ -1,15 +1,16 @@
 import { ArrowBackOutlined } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import YouTube from "react-youtube"
 import "./watch.css";
 
 export default function Watch() {
-    const { trailerUrl } = useSelector((state) => state.url);
-    {trailerUrl && console.log(trailerUrl)}
+    // const { trailerUrl } = useSelector((state) => state.url);
+    const trailer = "d9MyW72ELq0"
+    // {trailerUrl && console.log(trailerUrl)}
 
     const opts = {
-        height: "140px",
+        height: "100vh",
         width: "100%",
         playerVars: {
             autoplay: 1,
@@ -30,7 +31,7 @@ export default function Watch() {
           Home
         </div>
       </Link>
-      {trailerUrl && <YouTube  className="video" videoId={trailerUrl} opts={opts} />}
+      {trailer && <YouTube  className="video" videoId={trailer} opts={opts} />}
       {/* <video className="video" autoPlay progress controls src={movie.video} /> */}
     </div>
   );

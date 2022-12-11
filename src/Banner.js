@@ -8,7 +8,7 @@ function Banner({type}) {
   const [movie, setMovie] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(requests.fetchNetflixOriginals);
+      const request = await axios.get(requests.fetchNetflixOriginalMovies);
       setMovie(
         request.data.results[
           Math.floor(Math.random() * request.data.results.length)
@@ -17,7 +17,7 @@ function Banner({type}) {
       return request;
     }
     fetchData();
-  }, []);
+  }, [type]);
 
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
@@ -32,9 +32,9 @@ function Banner({type}) {
         backgroundPosition: "center center",
       }}
     >
-         {!type && (
+         {type && (
         <div className="category">
-          <span>{type === "movie" ? "Movies" : "Series"}</span>
+          <span>{type}</span>
           <select name="genre" id="genre">
             <option>Genre</option>
             <option value="adventure">Adventure</option>
@@ -61,7 +61,7 @@ function Banner({type}) {
           {truncate(movie?.overview, 150)}
         </h1>
         <div className="banner__buttons">
-          <button className="banner__button">
+          <button className="banner__button play">
           <PlayArrow />
           <span>Play</span>
           </button>

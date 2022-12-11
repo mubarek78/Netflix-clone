@@ -1,8 +1,11 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { ArrowDropDown, Notifications, Search } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import "./Nav.css";
+import {signOut} from "firebase/auth"
+import { auth } from './firebase'
+import { AuthContext } from './context/AuthContext'
 
 
 
@@ -22,7 +25,7 @@ function Nav() {
   }, []);
 
   const logout = () => {
-    localStorage.clear();
+    signOut(auth)
 }
 
   return (
@@ -41,9 +44,11 @@ function Nav() {
        <Link to="/series" className="link">
        <span>Series</span>
        </Link>
-       <span>Movies</span>
        <Link to="/movies" className="link">
-       <span>New and Popular</span>
+       <span>Movies</span>
+       </Link>
+       <Link to="/popular" className="link">
+       <span>Popular</span>
        </Link>
        <span>My List</span>
        </div>

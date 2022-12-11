@@ -1,8 +1,8 @@
 .list {
     width: 100%;
-    margin-top: 10px;
-    overflow: hidden;
-   
+    margin-top: 100px;
+    /* overflow: hidden; */
+    z-index: -1;
   }
     .listTitle {
       color: white;
@@ -20,7 +20,7 @@
         background-color: rgb(22, 22, 22, 0.5);
         color: white;
         position: absolute;
-        z-index: 99;
+        z-index: 9;
         top: 0;
         bottom: 0;
         margin: auto;

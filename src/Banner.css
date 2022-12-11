@@ -63,6 +63,10 @@ justify-content: left;
   align-items: center;
   justify-content: center;
 }
+
+.play{
+  background-color: #e6e6e6;
+}
 .banner__button:hover {
   color: #000;
   background-color: #e6e6e6;

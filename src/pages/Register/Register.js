@@ -6,7 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 // import { signup } from "../../features/user";
 import "./register.css";
 
+
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, db, storage } from "../../firebase";
+
 export default function Register() {
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState(false);
   const [isEmail, setIsemail] = useState(false)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,11 +22,27 @@ export default function Register() {
 
   const handleFinish = async (e) => {
     e.preventDefault();
-    
-    try {
-      await axios.post("http://localhost:8800/api/auth/register", { email, username, password });
-      navigate("/login");
-    } catch (err) {}
+      // console.log(e.target)
+      console.log(email)
+      console.log(username)
+      console.log(password)
+     
+      try {
+        //Create user
+        const res = await createUserWithEmailAndPassword(auth, email, password)
+        .then((user) => {
+          console.log(user)
+          navigate("/login");
+        })
+      } catch (err) {
+        setErr(true);
+        setLoading(false);
+      }
+
+    // try {
+    //   await axios.post("http://localhost:8800/api/auth/register", { email, username, password });
+    //   navigate("/login");
+    // } catch (err) {}
   };
 
   const handleStart = () => {
@@ -53,13 +75,17 @@ export default function Register() {
             </button>
           </div>
         ) : (
+          <>
           <form className="input">
             <input type="username" placeholder="username" onChange={(e) => setUsername(e.target.value) }/>
             <input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value) }/>
-            <button className="registerButton" onClick={handleFinish}>
+            <button disabled={loading} className="registerButton" onClick={handleFinish}>
               Start
             </button>
           </form>
+          {loading && "Processing please wait..."}
+          {err && <span>Something went wrong please try again</span>}
+          </>
         )}
       </div>
     </div>

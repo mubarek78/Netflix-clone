@@ -4,17 +4,21 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import { store, persistor } from "./features/store";
-import { PersistGate } from 'redux-persist/integration/react'
+// import { PersistGate } from 'redux-persist/integration/react'
+
+import { AuthContextProvider } from "./context/AuthContext";
 
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-  <PersistGate loading={null} persistor={persistor}>
+  <AuthContextProvider>
+      <Provider store={store}>
+ {/* <PersistGate loading={null} persistor={persistor}>  */}
     <App />
-    </PersistGate>
-  </Provider>
+    {/* </PersistGate> */}
+  </Provider> 
+  </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

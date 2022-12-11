@@ -8,21 +8,23 @@ import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import Watch from './pages/Watch/Watch';
 import { useDispatch, useSelector } from "react-redux";
+import { useContext } from "react";
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import { AuthContext } from "./context/AuthContext";
 
 
 function App() {
-  const currentUser = useSelector((state) => state.user.currentUser);
+  const { currentUser } = useContext(AuthContext);
   return <>
        <BrowserRouter>
     <Routes>
-    <Route path="/" element={currentUser ? <Home /> : <Navigate to="/login" />}/>
     <Route path="/login" element={currentUser ? <Navigate to="/" /> : <Login />}/> 
     <Route path="/register" element={currentUser ? <Navigate to="/" /> : <Register />}/>
+    <Route path="/" element={currentUser ? <Home type={"Movies"}/> : <Navigate to="/login" />}/>
     <Route path="/watch" element={currentUser ? <Navigate to="/watch" /> : <Login />}/>
-    {/* <Route path="/login" element={currentUser ? <Navigate to="/" /> : <Login />}/>  */}
-    {/* <Route path="/cart" element={<Cart />}/> */}
- 
+    <Route path="/movies" element={currentUser ? <Home type={"Movies"}/> : <Navigate to="/login" />}/>
+    <Route path="/series" element={currentUser ? <Home type={"Series"}/> : <Navigate to="/login" />}/>
+    <Route path="/popular" element={currentUser ? <Home type={"Popular"}/> : <Navigate to="/login" />}/> 
       </Routes>
     </BrowserRouter>
   </>
